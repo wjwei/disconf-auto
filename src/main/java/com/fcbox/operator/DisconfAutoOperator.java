@@ -1,20 +1,9 @@
 package com.fcbox.operator;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.fcbox.dto.DisconfAutoConfig;
 import com.fcbox.dto.DisconfFileStream;
 import com.fcbox.dto.DisconfInfo;
-import com.fcbox.dto.FileStream;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.*;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.*;
 
 /**
  * @author 000298
@@ -55,12 +44,12 @@ public class DisconfAutoOperator {
 
     /**
      * 上传应用的disconf配置
-     * @param jarDir
      * @param jarName
+     * @param autoConfig
      * @throws Exception
      */
-    public static void uploadAppDisconf(String jarDir, String jarName) throws Exception {
-        String jarPath = jarDir + "/" + jarName;
+    public static void uploadAppDisconf(String jarName, DisconfAutoConfig autoConfig) throws Exception {
+        String jarPath = autoConfig.getJarDir() + "/" + jarName;
 
         log.info("==============开始上传" + jarName + "应用disconf配置==============");
 
@@ -69,6 +58,9 @@ public class DisconfAutoOperator {
 
         //获取Disconf信息
         DisconfInfo disconfInfo = DisconfOperator.getDisconfInfo(stream.getDisconfStream());
+
+        //设置Disconf用户名密码信息
+        DisconfOperator.setDisconfUserNamePwd(disconfInfo, autoConfig.getHostUserNamePwd());
 
         if(disconfInfo.getEnableAutoUpload() == null || !disconfInfo.getEnableAutoUpload()){
             log.info("==============" + jarName + "应用disconf自动上传未开启，上传终止==============");

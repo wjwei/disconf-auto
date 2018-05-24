@@ -66,7 +66,16 @@ public class DisconfOperator {
         String enableAutoOverride = disconf.getProperty("enable.auto.override");
         disconfInfo.setEnableAutoOverride(StringUtils.isEmpty(enableAutoOverride) ? null : Boolean.valueOf(enableAutoOverride));
 
-        String hostUserNamePwd = System.getProperty("disconf.host.user.name.pwd");
+        return disconfInfo;
+    }
+
+    /**
+     * 设置Disconf用户名密码信息
+     * @param disconfInfo
+     * @param hostUserNamePwd
+     * @return
+     */
+    public static DisconfInfo setDisconfUserNamePwd(DisconfInfo disconfInfo, String hostUserNamePwd){
         if(!StringUtils.isEmpty(hostUserNamePwd)){
             String[] hostNamePwdArray = hostUserNamePwd.split(";");
             Map<String, String> map = new HashMap<>();

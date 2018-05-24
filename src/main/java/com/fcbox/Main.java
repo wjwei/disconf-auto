@@ -24,11 +24,10 @@ public class Main {
 
             //读出发布列表每行的应用名称
             List<String> jarNames = Files.readAllLines(Paths.get(new URI(autoConfig.getDeployListPath())), Charset.forName("UTF-8"));
-            String jarDir = autoConfig.getJarDir();
 
             for(String jarName : jarNames){
                 //上传应用的disconf配置
-                DisconfAutoOperator.uploadAppDisconf(jarDir, jarName);
+                DisconfAutoOperator.uploadAppDisconf(jarName, autoConfig);
             }
         } catch (Exception e) {
             log.error("发生异常：", e);
