@@ -3,11 +3,10 @@ package com.fcbox;
 import com.fcbox.dto.DisconfAutoConfig;
 import com.fcbox.operator.DisconfAutoOperator;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 
-import java.net.URI;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -17,13 +16,13 @@ import java.util.List;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-
         try {
             //加载DisconfAuto配置信息
             DisconfAutoConfig autoConfig = DisconfAutoOperator.loadDisconfAutoConfig();
 
             //读出发布列表每行的应用名称
-            List<String> jarNames = Files.readAllLines(Paths.get(new URI(autoConfig.getDeployListPath())), Charset.forName("UTF-8"));
+            InputStream stream = new FileInputStream(autoConfig.getDeployListPath());
+            List<String> jarNames = IOUtils.readLines(stream);
 
             for(String jarName : jarNames){
                 //上传应用的disconf配置
