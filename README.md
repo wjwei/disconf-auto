@@ -6,9 +6,9 @@ java -Ddeploy.list.path=E:/deploy_list.txt -Djar.dir=E:/IdeaProjects/fcbox-ad/fc
 ```
 
 ```
-* -Ddeploy.list.path 是指定的发布文件路径，文件内容是发布包的名称（例如：cn-store-service-3.5.war）一行一个名称，多个就是多行。
-* -Djar.dir          是发布包文件的所在目录。
-* -Ddisconf.host.user.name.pwd 是disconf控制台的访问IP或者域名加账号密码（组成：disconf控制台访问IP或域名 @ 用户名：密码），多个使用英文分号（;）进行分割。
+-Ddeploy.list.path 是指定的发布文件路径，文件内容是发布包的名称（例如：cn-store-service-3.5.war）一行一个名称，多个就是多行。
+-Djar.dir          是发布包文件的所在目录。
+-Ddisconf.host.user.name.pwd 是disconf控制台的访问IP或者域名加账号密码（组成：disconf控制台访问IP或域名 @ 用户名：密码），多个使用英文分号（;）进行分割。
 ```                             
 
 ## jar、war包配置
