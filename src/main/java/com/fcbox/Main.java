@@ -27,19 +27,11 @@ public class Main {
             String jarDir = autoConfig.getJarDir();
 
             for(String jarName : jarNames){
-
                 //上传应用的disconf配置
                 DisconfAutoOperator.uploadAppDisconf(jarDir, jarName);
             }
         } catch (Exception e) {
             log.error("发生异常：", e);
         }
-
     }
-
-
-
-
-
-
 }

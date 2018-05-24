@@ -6,7 +6,7 @@
 
   <groupId>com.fcbox</groupId>
   <artifactId>disconf-auto</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>disconf-auto</name>
   <url>http://www.example.com</url>
