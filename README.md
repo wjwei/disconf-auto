@@ -2,7 +2,7 @@
 
 ## 使用
 ```
-java -Ddeploy.list.path=E:/deploy_list.txt -Ddeploy.jars.dir=E:/IdeaProjects/fcbox-ad/fcbox-ad-gateway/target -Ddisconf.host.user.name.pwd=10.204.49.37@admin:admin; -jar disconf-auto-1.0.jar
+java -Ddeploy.list.path=/app/deploy/deploy_list.txt -Ddeploy.jars.dir=/app/deploy/jars -Ddisconf.host.user.name.pwd=10.204.49.37@admin:admin; -jar disconf-auto-1.0.jar
 ```
 
 ```
