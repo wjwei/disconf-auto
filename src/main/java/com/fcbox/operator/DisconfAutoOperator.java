@@ -31,13 +31,13 @@ public class DisconfAutoOperator {
         String hostUserNamePwd = prop.getProperty("disconf.host.user.name.pwd");*/
 
         String deployListPath = System.getProperty("deploy.list.path", "/app/deploy_apps/deploy_list.txt");
-        String jarDir = System.getProperty("jar.dir", "/app/deploy_apps/soft");
-        String hostUserNamePwd = System.getProperty("disconf.host.user.name.pwd");
+        String deployJarsDir = System.getProperty("deploy.jars.dir", "/app/deploy_apps/soft");
+        String disconfHostUserNamePwd = System.getProperty("disconf.host.user.name.pwd");
 
         DisconfAutoConfig config = new DisconfAutoConfig();
         config.setDeployListPath(deployListPath);
-        config.setJarDir(jarDir);
-        config.setHostUserNamePwd(hostUserNamePwd);
+        config.setDeployJarsDir(deployJarsDir);
+        config.setDisconfHostUserNamePwd(disconfHostUserNamePwd);
 
         return config;
     }
@@ -49,7 +49,7 @@ public class DisconfAutoOperator {
      * @throws Exception
      */
     public static void uploadAppDisconf(String jarName, DisconfAutoConfig autoConfig) throws Exception {
-        String jarPath = autoConfig.getJarDir() + "/" + jarName;
+        String jarPath = autoConfig.getDeployJarsDir() + "/" + jarName;
 
         log.info("==============开始上传" + jarName + "应用disconf配置==============");
 
@@ -60,7 +60,7 @@ public class DisconfAutoOperator {
         DisconfInfo disconfInfo = DisconfOperator.getDisconfInfo(stream.getDisconfStream());
 
         //设置Disconf用户名密码信息
-        DisconfOperator.setDisconfUserNamePwd(disconfInfo, autoConfig.getHostUserNamePwd());
+        DisconfOperator.setDisconfUserNamePwd(disconfInfo, autoConfig.getDisconfHostUserNamePwd());
 
         if(disconfInfo.getEnableAutoUpload() == null || !disconfInfo.getEnableAutoUpload()){
             log.info("==============" + jarName + "应用disconf自动上传未开启，上传终止==============");

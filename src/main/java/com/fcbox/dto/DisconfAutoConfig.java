@@ -14,7 +14,7 @@ import lombok.ToString;
 public class DisconfAutoConfig {
 
     private String deployListPath;
-    private String jarDir;
+    private String deployJarsDir;
 
-    private String hostUserNamePwd;
+    private String disconfHostUserNamePwd;
 }
