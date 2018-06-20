@@ -2,7 +2,7 @@
 
 ## 使用
 ```
-java -Ddeploy.list.path=/app/deploy/deploy_list.txt -Ddeploy.jars.dir=/app/deploy/jars -Ddisconf.host.user.name.pwd=10.209.56.52@admin:admin; -jar disconf-auto-1.0.jar
+java -Ddeploy.list.path=/app/deploy/deploy_list.txt -Ddeploy.jars.dir=/app/deploy/jars -Ddisconf.host.user.name.pwd=80.209.22.32@admin:admin; -jar disconf-auto-1.0.jar
 ```
 
 ```
