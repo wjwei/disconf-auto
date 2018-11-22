@@ -1,7 +1,7 @@
-package com.fcbox;
+package com.wjwei;
 
-import com.fcbox.dto.DisconfAutoConfig;
-import com.fcbox.operator.DisconfAutoOperator;
+import com.wjwei.dto.DisconfAutoConfig;
+import com.wjwei.operator.DisconfAutoOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 

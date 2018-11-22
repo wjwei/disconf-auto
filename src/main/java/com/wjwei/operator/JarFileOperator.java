@@ -1,9 +1,9 @@
-package com.fcbox.operator;
+package com.wjwei.operator;
 
-import com.fcbox.dto.DisconfAutoConfig;
-import com.fcbox.dto.DisconfFileStream;
-import com.fcbox.dto.DisconfInfo;
-import com.fcbox.dto.FileStream;
+import com.wjwei.dto.DisconfAutoConfig;
+import com.wjwei.dto.DisconfFileStream;
+import com.wjwei.dto.DisconfInfo;
+import com.wjwei.dto.FileStream;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

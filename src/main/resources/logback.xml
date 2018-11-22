@@ -20,7 +20,7 @@
         </encoder>
     </appender>
 
-    <logger name ="com.fcbox" />
+    <logger name ="com.wjwei" />
     <logger name="org" />
 
     <!-- level: FATAL,ERROR,WARN,INFO,DEBUG,TRACE -->

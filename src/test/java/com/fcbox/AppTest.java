@@ -1,4 +1,4 @@
-package com.fcbox;
+package com.wjwei;
 
 import static org.junit.Assert.assertTrue;
 
