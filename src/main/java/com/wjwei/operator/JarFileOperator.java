@@ -1,16 +1,13 @@
 package com.wjwei.operator;
 
-import com.wjwei.dto.DisconfAutoConfig;
 import com.wjwei.dto.DisconfFileStream;
 import com.wjwei.dto.DisconfInfo;
 import com.wjwei.dto.FileStream;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Properties;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -39,7 +36,7 @@ public class JarFileOperator {
         while(entries.hasMoreElements()){
             JarEntry element = entries.nextElement();
             String elementName = element.getName();
-            if(elementName.endsWith("disconf.properties")){
+            if(elementName.endsWith("application.properties")){
                 disconfEntry = element;
             }
             if(elementName.contains("/disconf/") && elementName.endsWith("watchConfFile.properties")){
@@ -48,7 +45,7 @@ public class JarFileOperator {
         }
 
         if(disconfEntry == null){
-            throw new RuntimeException("未找到disconf.properties文件！");
+            throw new RuntimeException("未找到application.properties文件！");
         }
         InputStream disconfStream = jar.getInputStream(disconfEntry);
 

@@ -54,16 +54,16 @@ public class DisconfOperator {
         disconf.load(disconfStream);
 
         DisconfInfo disconfInfo = new DisconfInfo();
-        disconfInfo.setConfServerHost(disconf.getProperty("conf_server_host"));
-        disconfInfo.setDisconfHostUrl("http://" + disconf.getProperty("conf_server_host"));
-        disconfInfo.setVersion(disconf.getProperty("version"));
-        disconfInfo.setApp(disconf.getProperty("app"));
-        disconfInfo.setEnv(disconf.getProperty("env"));
+        disconfInfo.setConfServerHost(disconf.getProperty("disconf.conf_server_host"));
+        disconfInfo.setDisconfHostUrl("http://" + disconf.getProperty("disconf.conf_server_host"));
+        disconfInfo.setVersion(disconf.getProperty("disconf.version"));
+        disconfInfo.setApp(disconf.getProperty("disconf.app"));
+        disconfInfo.setEnv(disconf.getProperty("disconf.env"));
 
-        String enableAutoUpload = disconf.getProperty("enable.auto.upload");
+        String enableAutoUpload = disconf.getProperty("disconf.enable.auto.upload");
         disconfInfo.setEnableAutoUpload(StringUtils.isEmpty(enableAutoUpload) ? null : Boolean.valueOf(enableAutoUpload));
 
-        String enableAutoOverride = disconf.getProperty("enable.auto.override");
+        String enableAutoOverride = disconf.getProperty("disconf.enable.auto.override");
         disconfInfo.setEnableAutoOverride(StringUtils.isEmpty(enableAutoOverride) ? null : Boolean.valueOf(enableAutoOverride));
 
         return disconfInfo;
@@ -367,7 +367,12 @@ public class DisconfOperator {
                     throw new RuntimeException(String.format("上传watch配置项失败，key:%s, value:%s，返回结果：%s", name, value, res));
                 }
 
-                log.info(String.format("上传watch配置项成功，key:%s, value:%s", name, value));
+                log.info(String.format("上传watch配置项成功，%s %s %s key:%s, value:%s",
+                        disconfInfo.getApp(),
+                        disconfInfo.getEnv(),
+                        disconfInfo.getVersion(),
+                        name,
+                        value));
             }
         }
     }
@@ -418,7 +423,11 @@ public class DisconfOperator {
                 throw new RuntimeException(String.format("上传普通配置文件失败，fileName:%s，返回结果：%s", fileName, res));
             }
 
-            log.info(String.format("上传普通配置文件成功，fileName:%s", fileName));
+            log.info(String.format("上传普通配置文件成功， %s %s %s fileName:%s",
+                    disconfInfo.getApp(),
+                    disconfInfo.getEnv(),
+                    disconfInfo.getVersion(),
+                    fileName));
         }
 
     }
@@ -547,7 +556,7 @@ public class DisconfOperator {
                     //删除配置
                     this.deleteConfig(disconfInfo, configId);
 
-                    log.info(String.format("成功删除配置！app:%s env:%s version:%s key:%s configId:%s",
+                    log.info(String.format("成功删除配置！%s %s %s key:%s configId:%s",
                             obj.getString("appName"),
                             obj.getString("envName"),
                             obj.getString("version"),

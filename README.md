@@ -14,12 +14,12 @@ java -Ddeploy.list.path=/app/deploy/deploy_list.txt -Ddeploy.jars.dir=/app/deplo
 ## jar、war包配置
 ```properties
 #是否开启自动上传（true、false）
-enable.auto.upload=true
+disconf.enable.auto.upload=true
 #是否自动覆盖现有配置（true、false）
-enable.auto.override=true
+disconf.enable.auto.override=true
 ```
 
-在disconf.properties文件中进行配置。
+在application.properties文件中进行配置。
 
 ## disconf文件存放要求
 disconf文件、或者配置项必须以如下结构存放
